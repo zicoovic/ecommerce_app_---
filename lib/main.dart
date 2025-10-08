@@ -1,8 +1,7 @@
 import 'package:ecommerce_app/core/di/injection_container.dart';
-import 'package:ecommerce_app/features/products/presentation/bloc/products_cubit.dart';
-import 'package:ecommerce_app/features/products/presentation/screens/products_list_screen.dart';
+import 'package:ecommerce_app/core/routing/route_generation_config.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,10 +13,12 @@ class MainApp extends StatelessWidget {
   const MainApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: BlocProvider(
-        create: (_) => getIt<ProductsCubit>(),
-        child: const ProductsListScreen(),
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        routerConfig: RouteGenerationConfig.goRouter,
       ),
     );
   }
