@@ -19,16 +19,13 @@ class RememberMeSwitch extends StatelessWidget {
       children: [
         Text(
           'Remember me',
-          style: TextStyle(
-            fontSize: 15.sp,
-            color: AppColors.textPrimary,
-          ),
+          style: TextStyle(fontSize: 15.sp, color: AppColors.textPrimary),
         ),
         Switch(
           value: value,
           onChanged: onChanged,
           activeTrackColor: AppColors.success,
-          activeThumbColor: AppColors.white,
+          activeColor: AppColors.white,
         ),
       ],
     );

@@ -10,8 +10,8 @@ class AuthCubit extends Cubit<AuthState> {
     emit(AuthLoading());
     try {
       final request = LoginRequestModel(email: email, password: password);
-      final user = await authRepository.login(request);
-      emit(AuthSuccess(user));
+      final authResponse = await authRepository.login(request);
+      emit(AuthSuccess(authResponse));
     } catch (e) {
       emit(AuthError(e.toString()));
     }

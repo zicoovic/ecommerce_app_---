@@ -28,9 +28,7 @@ class _ProductsListScreenState extends State<ProductsListScreen> {
       ),
       body: BlocBuilder<ProductsCubit, ProductsState>(
         builder: (context, state) {
-          print('🔥 Current state: ${state.runtimeType}');
           if (state is ProductsLoading) {
-            print('⏳ Loading...');
             return const Center(child: CircularProgressIndicator());
           } else if (state is ProductsSuccess) {
             return ListView.builder(
