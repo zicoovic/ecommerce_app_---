@@ -1,5 +1,8 @@
 import 'package:ecommerce_app/core/constants/app_colors.dart';
+import 'package:ecommerce_app/core/constants/app_strings.dart';
 import 'package:ecommerce_app/core/routing/app_routes.dart';
+import 'package:ecommerce_app/core/widgets/auth_header.dart';
+import 'package:ecommerce_app/core/widgets/custom_back_button.dart';
 import 'package:ecommerce_app/features/auth/presentation/bloc/auth_cubit.dart';
 import 'package:ecommerce_app/features/auth/presentation/bloc/auth_state.dart';
 import 'package:ecommerce_app/features/auth/presentation/widgets/email_field.dart';
@@ -13,6 +16,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
+/// Login screen for user authentication
+/// Follows Clean Architecture and Bloc pattern
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -33,12 +38,14 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
+  /// Handles login form submission
+  /// Follows Single Responsibility Principle
   void _handleLogin() {
     if (_formKey.currentState!.validate()) {
       context.read<AuthCubit>().login(
-            _emailController.text,
-            _passwordController.text,
-          );
+        _emailController.text,
+        _passwordController.text,
+      );
     }
   }
 
@@ -59,28 +66,14 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+  /// Builds the app bar with back button
+  /// Follows Single Responsibility Principle
   PreferredSizeWidget _buildAppBar() {
-    return AppBar(
-      backgroundColor: AppColors.white,
-      elevation: 0,
-      leading: IconButton(
-        icon: Container(
-          padding: EdgeInsets.all(8.w),
-          decoration: BoxDecoration(
-            color: AppColors.scaffoldBackgroundColor,
-            shape: BoxShape.circle,
-          ),
-          child: Icon(
-            Icons.arrow_back,
-            color: AppColors.textPrimary,
-            size: 20.sp,
-          ),
-        ),
-        onPressed: () => context.pop(),
-      ),
-    );
+    return CustomAuthAppBar();
   }
 
+  /// Handles authentication state changes and navigation
+  /// Follows Single Responsibility Principle
   void _handleAuthStateChanges(BuildContext context, AuthState state) {
     if (state is AuthSuccess) {
       context.go(AppRoutes.products);
@@ -95,6 +88,8 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
+  /// Builds the main body content
+  /// Follows Single Responsibility Principle
   Widget _buildBody(bool isLoading) {
     return SafeArea(
       child: Padding(
@@ -105,7 +100,10 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: 20.h),
-              _buildHeader(),
+              const AuthHeader(
+                title: AppStrings.loginWelcome,
+                subtitle: AppStrings.loginSubtitle,
+              ),
               SizedBox(height: 40.h),
               _buildFormFields(),
               SizedBox(height: 16.h),
@@ -124,44 +122,20 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _buildHeader() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Welcome',
-          style: TextStyle(
-            fontSize: 28.sp,
-            fontWeight: FontWeight.w600,
-            color: AppColors.textPrimary,
-          ),
-        ),
-        SizedBox(height: 8.h),
-        Text(
-          'Please enter your data to continue',
-          style: TextStyle(
-            fontSize: 15.sp,
-            color: AppColors.textSecondary,
-          ),
-        ),
-      ],
-    );
-  }
-
+  /// Builds the form fields (email and password)
+  /// Follows Single Responsibility Principle
   Widget _buildFormFields() {
     return Column(
       children: [
-        EmailField(
-          controller: _emailController,
-        ),
+        EmailField(controller: _emailController),
         SizedBox(height: 24.h),
-        PasswordField(
-          controller: _passwordController,
-        ),
+        PasswordField(controller: _passwordController),
       ],
     );
   }
 
+  /// Builds the remember me switch
+  /// Follows Single Responsibility Principle
   Widget _buildRememberMe() {
     return RememberMeSwitch(
       value: _rememberMe,
@@ -169,9 +143,11 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+  /// Builds the login button
+  /// Follows Single Responsibility Principle
   Widget _buildLoginButton(bool isLoading) {
     return GradientButton(
-      text: 'Login',
+      text: AppStrings.loginButton,
       isLoading: isLoading,
       onPressed: _handleLogin,
     );
