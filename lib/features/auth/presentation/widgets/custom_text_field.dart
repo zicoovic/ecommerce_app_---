@@ -1,7 +1,11 @@
 import 'package:ecommerce_app/core/constants/app_colors.dart';
+import 'package:ecommerce_app/core/theme/input_decoration_factory.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+/// Custom text field widget for auth screens
+/// Follows Single Responsibility Principle - only handles text field UI
+/// Uses Factory pattern for decoration creation
 class CustomTextField extends StatelessWidget {
   final String label;
   final String hintText;
@@ -29,75 +33,38 @@ class CustomTextField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Label
-        Text(
-          label,
-          style: TextStyle(
-            fontSize: 13.sp,
-            color: AppColors.textSecondary,
-          ),
-        ),
+        _buildLabel(),
         SizedBox(height: 8.h),
-
-        // Text Field
-        TextFormField(
-          controller: controller,
-          validator: validator,
-          obscureText: obscureText,
-          keyboardType: keyboardType,
-          decoration: InputDecoration(
-            hintText: hintText,
-            hintStyle: TextStyle(
-              color: AppColors.textPrimary,
-              fontSize: 15.sp,
-            ),
-            suffixIcon: suffixIcon,
-            filled: true,
-            fillColor: AppColors.white,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10.r),
-              borderSide: BorderSide.none,
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10.r),
-              borderSide: const BorderSide(
-                color: AppColors.borderColor,
-                width: 1,
-              ),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10.r),
-              borderSide: const BorderSide(
-                color: AppColors.borderFocused,
-                width: 1.5,
-              ),
-            ),
-            errorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10.r),
-              borderSide: const BorderSide(
-                color: AppColors.error,
-                width: 1,
-              ),
-            ),
-            focusedErrorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10.r),
-              borderSide: const BorderSide(
-                color: AppColors.error,
-                width: 1.5,
-              ),
-            ),
-            contentPadding: EdgeInsets.symmetric(
-              horizontal: 16.w,
-              vertical: 16.h,
-            ),
-          ),
-          onChanged: (value) {
-            if (onChanged != null) {
-              onChanged!();
-            }
-          },
-        ),
+        _buildTextField(),
       ],
+    );
+  }
+
+  /// Builds the label widget
+  /// Follows Single Responsibility Principle
+  Widget _buildLabel() {
+    return Text(
+      label,
+      style: TextStyle(
+        fontSize: 13.sp,
+        color: AppColors.textSecondary,
+      ),
+    );
+  }
+
+  /// Builds the text field widget using InputDecorationFactory
+  /// Follows Dependency Inversion Principle - depends on abstraction (factory)
+  Widget _buildTextField() {
+    return TextFormField(
+      controller: controller,
+      validator: validator,
+      obscureText: obscureText,
+      keyboardType: keyboardType,
+      decoration: InputDecorationFactory.create(
+        hintText: hintText,
+        suffixIcon: suffixIcon,
+      ),
+      onChanged: onChanged != null ? (_) => onChanged!() : null,
     );
   }
 }
