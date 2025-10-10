@@ -59,13 +59,13 @@ class _OnboardingContent extends StatelessWidget {
   Widget _buildCard(BuildContext context) {
     return Container(
       width: 345.w,
-      height: 248.h,
-      padding: const EdgeInsets.all(15),
+      padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 20.h),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20.r),
       ),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           _buildTitle(),

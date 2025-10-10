@@ -5,19 +5,14 @@ import 'package:ecommerce_app/features/onboarding/onboarding_screen.dart';
 import 'package:ecommerce_app/features/onboarding/presentation/bloc/onboarding_cubit.dart';
 import 'package:ecommerce_app/features/products/presentation/bloc/products_cubit.dart';
 import 'package:ecommerce_app/features/products/presentation/screens/products_list_screen.dart';
-import 'package:ecommerce_app/features/splash/splash_screen.dart';
 import 'package:ecommerce_app/features/welcome/welcome_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class RouteGenerationConfig {
   static GoRouter goRouter = GoRouter(
-    initialLocation: AppRoutes.splash,
+    initialLocation: AppRoutes.onboarding,
     routes: [
-      GoRoute(
-        path: AppRoutes.splash,
-        builder: (context, state) => const SplashScreen(),
-      ),
       GoRoute(
         path: AppRoutes.welcome,
         builder: (context, state) => const WelcomeScreen(),

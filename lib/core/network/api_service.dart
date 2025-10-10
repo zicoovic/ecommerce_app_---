@@ -5,11 +5,7 @@ class ApiService {
   final Dio _dio = Dio(
     BaseOptions(
       baseUrl: ApiConstants.baseUrl,
-      headers: {
-        'Accept': 'application/json',
-        'Cookie':
-            'access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlYWVlMTNlMS01MDZkLTRjNTUtMDA3Yy0wOGRlMDQxODkwZmEiLCJqdGkiOiI0NDBjZTEwNS1iM2Q2LTQzNjAtODhlMS00M2U0ODRlNDRiMGMiLCJlbWFpbCI6ImFiZGVscmhtYW56YWthcmlhcWFAZ21haWwuY29tIiwibmFtZSI6ImFiZG8gemljbyIsInJvbGVzIjoiIiwicGljdHVyZSI6IiIsImV4cCI6MTc2MDAzMDY4NywiaXNzIjoiZXNob3AubmV0IiwiYXVkIjoiZXNob3AubmV0In0.bU6DUsEX-cQmRZj_FDzaziuVqAyGIU1-9yVUpoiIioM',
-      },
+      headers: {'Accept': 'application/json'},
     ),
   );
 
