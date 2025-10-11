@@ -69,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
   /// Builds the app bar with back button
   /// Follows Single Responsibility Principle
   PreferredSizeWidget _buildAppBar() {
-    return CustomAuthAppBar();
+    return CustomAuthAppBar(onBackPressed: () => context.pop());
   }
 
   /// Handles authentication state changes and navigation
@@ -92,7 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
   /// Follows Single Responsibility Principle
   Widget _buildBody(bool isLoading) {
     return SafeArea(
-      child: Padding(
+      child: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Form(
           key: _formKey,
@@ -111,10 +111,10 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(height: 8.h),
               _buildRememberMe(),
               SizedBox(height: 24.h),
-              const Spacer(),
               const TermAndCondition(),
               SizedBox(height: 10.h),
               _buildLoginButton(isLoading),
+              SizedBox(height: 20.h),
             ],
           ),
         ),

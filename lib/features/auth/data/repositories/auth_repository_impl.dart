@@ -2,6 +2,7 @@ import 'package:ecommerce_app/features/auth/data/data_sources/auth_local_data_so
 import 'package:ecommerce_app/features/auth/data/data_sources/auth_remote_data_source.dart';
 import 'package:ecommerce_app/features/auth/data/models/auth_response_model.dart';
 import 'package:ecommerce_app/features/auth/data/models/login_request_model.dart';
+import 'package:ecommerce_app/features/auth/data/models/register_request_model.dart';
 import 'package:ecommerce_app/features/auth/domain/repositories/auth_repository.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
@@ -44,5 +45,13 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<String?> getAccessToken() {
     return authLocalDataSource.getAccessToken();
+  }
+
+  @override
+  Future<AuthResponseModel> register(RegisterRequestModel request) async {
+    final authResponse = await authRemoteDataSource.register(request);
+    // Save auth response to local storage
+    await authLocalDataSource.saveAuthResponse(authResponse);
+    return authResponse;
   }
 }

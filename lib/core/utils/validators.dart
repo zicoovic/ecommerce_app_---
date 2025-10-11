@@ -30,4 +30,15 @@ class Validators {
     if (password.length < 10) return 'Medium';
     return 'Strong';
   }
+
+  // Name validation (First Name / Last Name)
+  static String? validateName(String? value, String fieldName) {
+    if (value == null || value.trim().isEmpty) {
+      return 'Please enter your $fieldName';
+    }
+    if (value.trim().length < 2) {
+      return '$fieldName must be at least 2 characters';
+    }
+    return null;
+  }
 }

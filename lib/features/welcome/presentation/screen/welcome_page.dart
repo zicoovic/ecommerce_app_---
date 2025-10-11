@@ -18,7 +18,7 @@ class WelcomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Padding(
+        child: SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal: 28.w),
           child: Column(
             children: [
@@ -27,7 +27,7 @@ class WelcomeScreen extends StatelessWidget {
               const WelcomeHeader(),
               SizedBox(height: 100.h),
               _buildSocialButtonsSection(),
-              const Spacer(),
+              SizedBox(height: 100.h),
               _buildBottomSection(context),
               SizedBox(height: 24.h),
             ],
@@ -83,11 +83,10 @@ class WelcomeScreen extends StatelessWidget {
 
   /// Navigation methods
   void _navigateToLogin(BuildContext context) {
-    context.go('/login');
+    context.push('/login');
   }
 
   void _navigateToRegister(BuildContext context) {
-    // TODO: Implement navigation to register screen
-    // context.go('/register');
+    context.push('/register');
   }
 }

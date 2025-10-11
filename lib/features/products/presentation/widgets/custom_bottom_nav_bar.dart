@@ -17,7 +17,6 @@ class CustomBottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 70.h,
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
@@ -28,34 +27,40 @@ class CustomBottomNavBar extends StatelessWidget {
           ),
         ],
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          _buildNavItem(
-            icon: Icons.home_outlined,
-            activeIcon: Icons.home,
-            index: 0,
-            label: 'Home',
+      child: SafeArea(
+        child: Container(
+          // height: 60.h,
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              _buildNavItem(
+                icon: Icons.home_outlined,
+                activeIcon: Icons.home,
+                index: 0,
+                label: 'Home',
+              ),
+              _buildNavItem(
+                icon: Icons.favorite_border,
+                activeIcon: Icons.favorite,
+                index: 1,
+                label: 'Wishlist',
+              ),
+              _buildNavItem(
+                icon: Icons.shopping_bag_outlined,
+                activeIcon: Icons.shopping_bag,
+                index: 2,
+                label: 'Cart',
+              ),
+              _buildNavItem(
+                icon: Icons.account_balance_wallet_outlined,
+                activeIcon: Icons.account_balance_wallet,
+                index: 3,
+                label: 'Wallet',
+              ),
+            ],
           ),
-          _buildNavItem(
-            icon: Icons.favorite_border,
-            activeIcon: Icons.favorite,
-            index: 1,
-            label: 'Wishlist',
-          ),
-          _buildNavItem(
-            icon: Icons.shopping_bag_outlined,
-            activeIcon: Icons.shopping_bag,
-            index: 2,
-            label: 'Cart',
-          ),
-          _buildNavItem(
-            icon: Icons.account_balance_wallet_outlined,
-            activeIcon: Icons.account_balance_wallet,
-            index: 3,
-            label: 'Wallet',
-          ),
-        ],
+        ),
       ),
     );
   }
@@ -79,7 +84,9 @@ class CustomBottomNavBar extends StatelessWidget {
           children: [
             Icon(
               isActive ? activeIcon : icon,
-              color: isActive ? const Color(0xFF9747FF) : const Color(0xFF8F959E),
+              color: isActive
+                  ? const Color(0xFF9747FF)
+                  : const Color(0xFF8F959E),
               size: 24.sp,
             ),
             SizedBox(height: 4.h),
@@ -88,7 +95,9 @@ class CustomBottomNavBar extends StatelessWidget {
               style: TextStyle(
                 fontSize: 10.sp,
                 fontWeight: isActive ? FontWeight.w600 : FontWeight.w400,
-                color: isActive ? const Color(0xFF9747FF) : const Color(0xFF8F959E),
+                color: isActive
+                    ? const Color(0xFF9747FF)
+                    : const Color(0xFF8F959E),
               ),
             ),
           ],

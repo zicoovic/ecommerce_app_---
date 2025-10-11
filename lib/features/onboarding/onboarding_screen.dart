@@ -29,7 +29,7 @@ class OnboardingScreen extends StatelessWidget {
   /// Separated to follow Single Responsibility Principle
   void _handleStateChanges(BuildContext context, OnboardingState state) {
     if (state is OnboardingSuccess) {
-      context.go(AppRoutes.welcome);
+      context.push(AppRoutes.welcome);
     }
   }
 }
