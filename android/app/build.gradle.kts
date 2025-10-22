@@ -1,7 +1,6 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
 }
 
@@ -12,7 +11,7 @@ android {
 
     flavorDimensions += "env"
 
-     productFlavors {
+    productFlavors {
         create("dev") {
             dimension = "env"
             applicationIdSuffix = ".dev"
@@ -33,32 +32,22 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.example.ecommerce_app"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
 
-    signingConfigs {
-        debug {
-            storeFile = file("debug.keystore")
-        }
-    }
-
+    // ✅ FIX - Correct Kotlin DSL syntax
     buildTypes {
-        debug {
-            debuggable = true
-            signingConfig = signingConfigs.debug
+        getByName("debug") {
+            isDebuggable = true
         }
-        release {
-            debuggable = false
-            signingConfig = signingConfigs.debug  // للـ now (في production استخدم keystore proper)
-            minifyEnabled = false
-            shrinkResources = false
+        getByName("release") {
+            isDebuggable = false
+            isMinifyEnabled = false
+            isShrinkResources = false
         }
     }
 }

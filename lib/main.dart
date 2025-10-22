@@ -1,6 +1,15 @@
+import 'package:ecommerce_app/core/constants/api_constants.dart';
+import 'package:ecommerce_app/core/di/injection_container.dart';
 import 'package:ecommerce_app/core/routing/route_generation_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await setupDependencies();
+  const String apiUrl = ApiConstants.baseUrl;
+  runApp(const MainApp(apiUrl: apiUrl));
+}
 
 class MainApp extends StatelessWidget {
   final String apiUrl;
