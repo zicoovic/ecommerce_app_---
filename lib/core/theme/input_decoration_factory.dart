@@ -8,29 +8,40 @@ class InputDecorationFactory {
   const InputDecorationFactory._();
 
   /// Creates a standard input decoration with customizable properties
+  /// Now theme-aware - pass BuildContext to use theme colors
   static InputDecoration create({
     required String hintText,
+    BuildContext? context,
     TextStyle? hintStyle,
     Widget? suffixIcon,
     Widget? prefixIcon,
     Color? fillColor,
     double? borderRadius,
   }) {
+    // Get theme-aware colors if context is provided
+    final isDark = context != null
+        ? Theme.of(context).brightness == Brightness.dark
+        : false;
+
+    final defaultFillColor = isDark ? AppColors.darkSurface : AppColors.white;
+    final defaultBorderColor = isDark ? AppColors.darkBorder : AppColors.borderColor;
+    final defaultHintColor = isDark ? AppColors.darkTextHint : AppColors.textHint;
+
     return InputDecoration(
       hintText: hintText,
       hintStyle: hintStyle ??
           TextStyle(
-            color: AppColors.textPrimary,
+            color: defaultHintColor,
             fontSize: 15.sp,
           ),
       suffixIcon: suffixIcon,
       prefixIcon: prefixIcon,
       filled: true,
-      fillColor: fillColor ?? AppColors.white,
+      fillColor: fillColor ?? defaultFillColor,
       border: _buildBorder(borderRadius, BorderSide.none),
       enabledBorder: _buildBorder(
         borderRadius,
-        const BorderSide(color: AppColors.borderColor, width: 1),
+        BorderSide(color: defaultBorderColor, width: 1),
       ),
       focusedBorder: _buildBorder(
         borderRadius,

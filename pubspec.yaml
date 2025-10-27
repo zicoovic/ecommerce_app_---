@@ -40,10 +40,16 @@ dev_dependencies:
 
 flutter_native_splash:
   color: "#9775FA"
+  color_dark: "#2D1B4E"
   image: assets/images/splash.png
   android: true
-  ios: true
+  # ios: true
   web: false
+  fullscreen: false
+  android_12:
+    color: "#9775FA"
+    color_dark: "#2D1B4E"
+    image: assets/images/splash.png
 
 flutter:
   uses-material-design: true

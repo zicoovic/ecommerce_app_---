@@ -1,6 +1,5 @@
 import 'package:ecommerce_app/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ForgetPassword extends StatelessWidget {
   const ForgetPassword({super.key});
@@ -15,7 +14,9 @@ class ForgetPassword extends StatelessWidget {
         },
         child: Text(
           'Forgot password?',
-          style: TextStyle(fontSize: 13.sp, color: AppColors.error),
+          style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                color: AppColors.error,
+              ),
         ),
       ),
     );

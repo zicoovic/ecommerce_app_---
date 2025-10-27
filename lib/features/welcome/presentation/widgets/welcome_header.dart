@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 /// Welcome screen header with title
 /// Displays "Let's Get Started" centered
@@ -11,10 +10,8 @@ class WelcomeHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       "Let's Get Started",
-      style: TextStyle(
-        fontSize: 28.sp,
+      style: Theme.of(context).textTheme.headlineMedium?.copyWith(
         fontWeight: FontWeight.bold,
-        color: Colors.black,
         letterSpacing: 0.3,
       ),
       textAlign: TextAlign.center,

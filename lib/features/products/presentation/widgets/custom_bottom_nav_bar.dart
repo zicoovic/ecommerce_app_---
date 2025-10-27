@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,10 +19,10 @@ class CustomBottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.surface,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 10,
             offset: const Offset(0, -2),
           ),
@@ -35,24 +36,28 @@ class CustomBottomNavBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               _buildNavItem(
+                context: context,
                 icon: Icons.home_outlined,
                 activeIcon: Icons.home,
                 index: 0,
                 label: 'Home',
               ),
               _buildNavItem(
+                context: context,
                 icon: Icons.favorite_border,
                 activeIcon: Icons.favorite,
                 index: 1,
                 label: 'Wishlist',
               ),
               _buildNavItem(
+                context: context,
                 icon: Icons.shopping_bag_outlined,
                 activeIcon: Icons.shopping_bag,
                 index: 2,
                 label: 'Cart',
               ),
               _buildNavItem(
+                context: context,
                 icon: Icons.account_balance_wallet_outlined,
                 activeIcon: Icons.account_balance_wallet,
                 index: 3,
@@ -67,6 +72,7 @@ class CustomBottomNavBar extends StatelessWidget {
 
   /// Build individual navigation item
   Widget _buildNavItem({
+    required BuildContext context,
     required IconData icon,
     required IconData activeIcon,
     required int index,
@@ -85,19 +91,19 @@ class CustomBottomNavBar extends StatelessWidget {
             Icon(
               isActive ? activeIcon : icon,
               color: isActive
-                  ? const Color(0xFF9747FF)
-                  : const Color(0xFF8F959E),
+                  ? AppColors.primaryPurple
+                  : AppColors.textSecondary,
               size: 24.sp,
             ),
             SizedBox(height: 4.h),
             Text(
               label,
-              style: TextStyle(
+              style: Theme.of(context).textTheme.labelSmall?.copyWith(
                 fontSize: 10.sp,
                 fontWeight: isActive ? FontWeight.w600 : FontWeight.w400,
                 color: isActive
-                    ? const Color(0xFF9747FF)
-                    : const Color(0xFF8F959E),
+                    ? AppColors.primaryPurple
+                    : AppColors.textSecondary,
               ),
             ),
           ],

@@ -1,5 +1,5 @@
+import 'package:ecommerce_app/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 /// Section header with title and "View All" link
 /// Used for "Choose Brand", "New Arrival", etc.
@@ -21,20 +21,14 @@ class SectionHeader extends StatelessWidget {
       children: [
         Text(
           title,
-          style: TextStyle(
-            fontSize: 17.sp,
-            fontWeight: FontWeight.w600,
-            color: Colors.black,
-          ),
+          style: Theme.of(context).textTheme.titleLarge,
         ),
         GestureDetector(
           onTap: onViewAllPressed,
           child: Text(
             'View All',
-            style: TextStyle(
-              fontSize: 13.sp,
-              fontWeight: FontWeight.w400,
-              color: const Color(0xFF8F959E),
+            style: Theme.of(context).textTheme.labelMedium?.copyWith(
+              color: AppColors.textSecondary,
             ),
           ),
         ),

@@ -1,4 +1,3 @@
-import 'package:ecommerce_app/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -30,12 +29,10 @@ class AuthHeader extends StatelessWidget {
   /// Builds the title text
   /// Follows Single Responsibility Principle
   Widget _buildTitle() {
-    return Text(
-      title,
-      style: TextStyle(
-        fontSize: 28.sp,
-        fontWeight: FontWeight.w600,
-        color: AppColors.textPrimary,
+    return Builder(
+      builder: (context) => Text(
+        title,
+        style: Theme.of(context).textTheme.headlineMedium,
       ),
     );
   }
@@ -43,11 +40,10 @@ class AuthHeader extends StatelessWidget {
   /// Builds the subtitle text
   /// Follows Single Responsibility Principle
   Widget _buildSubtitle() {
-    return Text(
-      subtitle,
-      style: TextStyle(
-        fontSize: 15.sp,
-        color: AppColors.textSecondary,
+    return Builder(
+      builder: (context) => Text(
+        subtitle,
+        style: Theme.of(context).textTheme.titleMedium,
       ),
     );
   }

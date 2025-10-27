@@ -1,7 +1,5 @@
-import 'package:ecommerce_app/core/constants/app_colors.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TermAndCondition extends StatelessWidget {
   const TermAndCondition({super.key});
@@ -12,7 +10,7 @@ class TermAndCondition extends StatelessWidget {
       child: RichText(
         textAlign: TextAlign.center,
         text: TextSpan(
-          style: TextStyle(fontSize: 13.sp, color: AppColors.textSecondary),
+          style: Theme.of(context).textTheme.labelMedium,
           children: [
             const TextSpan(
               text:
@@ -20,10 +18,7 @@ class TermAndCondition extends StatelessWidget {
             ),
             TextSpan(
               text: 'Term and Condition',
-              style: TextStyle(
-                color: AppColors.textPrimary,
-                fontWeight: FontWeight.w600,
-              ),
+              style: Theme.of(context).textTheme.titleSmall,
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
                   // TODO: Navigate to terms

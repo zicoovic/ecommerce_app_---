@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -19,8 +20,8 @@ class CreateAccountButton extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: const LinearGradient(
           colors: [
-            Color(0xFF9747FF),
-            Color(0xFF6C63FF),
+            AppColors.primaryPurple,
+            AppColors.secondaryPurple,
           ],
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,
@@ -38,10 +39,8 @@ class CreateAccountButton extends StatelessWidget {
         ),
         child: Text(
           'Create an Account',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 17.sp,
-            fontWeight: FontWeight.w600,
+          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+            color: AppColors.white,
             letterSpacing: 0.2,
           ),
         ),

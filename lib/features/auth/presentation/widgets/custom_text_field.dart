@@ -1,4 +1,3 @@
-import 'package:ecommerce_app/core/constants/app_colors.dart';
 import 'package:ecommerce_app/core/theme/input_decoration_factory.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -43,11 +42,10 @@ class CustomTextField extends StatelessWidget {
   /// Builds the label widget
   /// Follows Single Responsibility Principle
   Widget _buildLabel() {
-    return Text(
-      label,
-      style: TextStyle(
-        fontSize: 13.sp,
-        color: AppColors.textSecondary,
+    return Builder(
+      builder: (context) => Text(
+        label,
+        style: Theme.of(context).textTheme.labelMedium,
       ),
     );
   }
@@ -55,16 +53,20 @@ class CustomTextField extends StatelessWidget {
   /// Builds the text field widget using InputDecorationFactory
   /// Follows Dependency Inversion Principle - depends on abstraction (factory)
   Widget _buildTextField() {
-    return TextFormField(
-      controller: controller,
-      validator: validator,
-      obscureText: obscureText,
-      keyboardType: keyboardType,
-      decoration: InputDecorationFactory.create(
-        hintText: hintText,
-        suffixIcon: suffixIcon,
+    return Builder(
+      builder: (context) => TextFormField(
+        controller: controller,
+        validator: validator,
+        obscureText: obscureText,
+        keyboardType: keyboardType,
+        style: Theme.of(context).textTheme.bodyLarge,
+        decoration: InputDecorationFactory.create(
+          hintText: hintText,
+          context: context,
+          suffixIcon: suffixIcon,
+        ),
+        onChanged: onChanged != null ? (_) => onChanged!() : null,
       ),
-      onChanged: onChanged != null ? (_) => onChanged!() : null,
     );
   }
 }

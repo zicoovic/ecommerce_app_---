@@ -1,7 +1,6 @@
 import 'package:ecommerce_app/core/constants/app_colors.dart';
 import 'package:ecommerce_app/core/constants/app_strings.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 /// Remember me switch widget for login screen
 /// Follows Single Responsibility Principle - only handles switch UI
@@ -22,7 +21,7 @@ class RememberMeSwitch extends StatelessWidget {
       children: [
         Text(
           AppStrings.rememberMe,
-          style: TextStyle(fontSize: 15.sp, color: AppColors.textPrimary),
+          style: Theme.of(context).textTheme.titleMedium,
         ),
         Switch(
           value: value,

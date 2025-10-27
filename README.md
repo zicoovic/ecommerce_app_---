@@ -44,6 +44,30 @@ _A modern, feature-rich shopping experience built with Flutter._
     </td>
   </tr>
 </table>
+<table>
+  <tr>
+    <td align="center">
+      <img src="screenshots/onboarding_darkmood.png" width="200px" alt="Onboarding Screen Dark Mode"/><br />
+      <b>Onboarding (Dark)</b>
+    </td>
+    <td align="center">
+      <img src="screenshots/welcome_darkmood.png" width="200px" alt="Welcome Dark Mode"/><br />
+      <b>Welcome (Dark)</b>
+    </td>
+    <td align="center">
+      <img src="screenshots/login_darkmood.png" width="200px" alt="Login Dark Mode"/><br />
+      <b>Login (Dark)</b>
+    </td>
+    <td align="center">
+      <img src="screenshots/register_darkmood.png" width="200px" alt="Register Dark Mode"/><br />
+      <b>Register (Dark)</b>
+    </td>
+    <td align="center">
+      <img src="screenshots/product_darkmood.png" width="200px" alt="Products Dark Mode"/><br />
+      <b>Products (Dark)</b>
+    </td>
+  </tr>
+</table>
 
 </div>
 
@@ -84,9 +108,10 @@ _A modern, feature-rich shopping experience built with Flutter._
 
 - ✅ **Responsive Design** with ScreenUtil
 - ✅ **Modern Purple Theme** `#9775FA`
+- ✅ **Dark Mode Support** with theme toggle and persistence
 - ✅ **Custom Widgets** for consistency
 - ✅ **Smooth Animations** throughout the app
-- ✅ **Native Splash Screen** for professional launch
+- ✅ **Native Splash Screen** with dark mode support
 - ✅ **Clean and intuitive** navigation
 
 ---
@@ -186,7 +211,7 @@ lib/
 - [ ] Orders (history, tracking)
 - [ ] Social login
 - [ ] Localization (AR/EN)
-- [ ] Dark mode
+- [x] Dark mode with theme toggle
 - [ ] CI (format, analyze, test) via GitHub Actions
 
 ---

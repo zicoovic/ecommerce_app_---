@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/constants/app_colors.dart';
 import 'package:ecommerce_app/features/products/presentation/bloc/products_cubit.dart';
 import 'package:ecommerce_app/features/products/presentation/bloc/products_state.dart';
 import 'package:ecommerce_app/features/products/presentation/widgets/custom_bottom_nav_bar.dart';
@@ -33,7 +34,7 @@ class _ProductsListScreenState extends State<ProductsListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: HomeAppBar(
         onMenuPressed: _handleMenuPressed,
         onCartPressed: _handleCartPressed,
@@ -64,8 +65,10 @@ class _ProductsListScreenState extends State<ProductsListScreen> {
 
   /// Loading state
   Widget _buildLoadingState() {
-    return const Center(
-      child: CircularProgressIndicator(color: Color(0xFF9747FF)),
+    return Center(
+      child: CircularProgressIndicator(
+        color: Theme.of(context).colorScheme.primary,
+      ),
     );
   }
 
@@ -94,11 +97,14 @@ class _ProductsListScreenState extends State<ProductsListScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.error_outline, size: 60.sp, color: const Color(0xFF8F959E)),
+          Icon(Icons.error_outline, size: 60.sp, color: AppColors.textSecondary),
           SizedBox(height: 16.h),
           Text(
             state.message,
-            style: TextStyle(fontSize: 15.sp, color: const Color(0xFF8F959E)),
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.w400,
+              color: AppColors.textSecondary,
+            ),
           ),
         ],
       ),

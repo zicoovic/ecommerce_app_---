@@ -17,7 +17,9 @@ class OnboardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.primaryPurple,
+      backgroundColor: Theme.of(context).brightness == Brightness.dark
+          ? const Color(0xFF2D1B4E)
+          : AppColors.primaryPurple,
       body: BlocListener<OnboardingCubit, OnboardingState>(
         listener: _handleStateChanges,
         child: const _OnboardingContent(),
@@ -61,7 +63,7 @@ class _OnboardingContent extends StatelessWidget {
       width: 345.w,
       padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 20.h),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(20.r),
       ),
       child: Column(
@@ -81,25 +83,31 @@ class _OnboardingContent extends StatelessWidget {
   }
 
   Widget _buildTitle() {
-    return Text(
-      AppStrings.onboardingTitle,
-      style: TextStyle(
-        fontSize: 25.sp,
-        fontWeight: FontWeight.bold,
-        color: Colors.black,
+    return Builder(
+      builder: (context) => Text(
+        AppStrings.onboardingTitle,
+        style: Theme.of(context).textTheme.displayMedium?.copyWith(
+          fontWeight: FontWeight.bold,
+          color: Theme.of(context).brightness == Brightness.dark
+              ? AppColors.white
+              : AppColors.textPrimary,
+        ),
       ),
     );
   }
 
   Widget _buildSubtitle() {
-    return Text(
-      AppStrings.onboardingSubtitle,
-      style: TextStyle(
-        fontSize: 15.sp,
-        fontWeight: FontWeight.normal,
-        color: Colors.black,
+    return Builder(
+      builder: (context) => Text(
+        AppStrings.onboardingSubtitle,
+        style: Theme.of(context).textTheme.titleMedium?.copyWith(
+          fontWeight: FontWeight.normal,
+          color: Theme.of(context).brightness == Brightness.dark
+              ? AppColors.white
+              : AppColors.textPrimary,
+        ),
+        textAlign: TextAlign.center,
       ),
-      textAlign: TextAlign.center,
     );
   }
 
@@ -147,7 +155,9 @@ class _OnboardingContent extends StatelessWidget {
               : () => context.read<OnboardingCubit>().skip(),
           child: Text(
             AppStrings.onboardingSkip,
-            style: TextStyle(color: AppColors.textSecondary, fontSize: 17.sp),
+            style: Theme.of(
+              context,
+            ).textTheme.titleLarge?.copyWith(color: AppColors.textSecondary),
           ),
         );
       },

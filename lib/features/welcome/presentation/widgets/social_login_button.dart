@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -24,8 +25,8 @@ class SocialLoginButton extends StatelessWidget {
   }) {
     return SocialLoginButton(
       text: 'Facebook',
-      icon: const Icon(Icons.facebook, color: Colors.white, size: 24),
-      backgroundColor: const Color(0xFF4267B2),
+      icon: const Icon(Icons.facebook, color: AppColors.white, size: 24),
+      backgroundColor: AppColors.facebookBlue,
       onPressed: onPressed,
     );
   }
@@ -36,8 +37,8 @@ class SocialLoginButton extends StatelessWidget {
   }) {
     return SocialLoginButton(
       text: 'Twitter',
-      icon: const Icon(Icons.alternate_email, color: Colors.white, size: 24),
-      backgroundColor: const Color(0xFF1DA1F2),
+      icon: const Icon(Icons.alternate_email, color: AppColors.white, size: 24),
+      backgroundColor: AppColors.twitterBlue,
       onPressed: onPressed,
     );
   }
@@ -51,12 +52,12 @@ class SocialLoginButton extends StatelessWidget {
       icon: const Text(
         'G',
         style: TextStyle(
-          color: Colors.white,
+          color: AppColors.white,
           fontSize: 24,
           fontWeight: FontWeight.bold,
         ),
       ),
-      backgroundColor: const Color(0xFFDB4437),
+      backgroundColor: AppColors.googleRed,
       onPressed: onPressed,
     );
   }
@@ -83,10 +84,8 @@ class SocialLoginButton extends StatelessWidget {
             SizedBox(width: 12.w),
             Text(
               text,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 17.sp,
-                fontWeight: FontWeight.w600,
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                color: AppColors.white,
                 letterSpacing: 0.2,
               ),
             ),

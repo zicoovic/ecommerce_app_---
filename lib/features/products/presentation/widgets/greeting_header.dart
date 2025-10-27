@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -19,20 +20,17 @@ class GreetingHeader extends StatelessWidget {
       children: [
         Text(
           'Hello',
-          style: TextStyle(
-            fontSize: 28.sp,
+          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
             fontWeight: FontWeight.bold,
-            color: Colors.black,
             height: 1.2,
           ),
         ),
         SizedBox(height: 4.h),
         Text(
           'Welcome to Laza.',
-          style: TextStyle(
-            fontSize: 15.sp,
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
             fontWeight: FontWeight.w400,
-            color: const Color(0xFF8F959E),
+            color: AppColors.textSecondary,
             height: 1.3,
           ),
         ),

@@ -21,10 +21,7 @@ class GradientButton extends StatelessWidget {
       height: 50.h,
       decoration: BoxDecoration(
         gradient: const LinearGradient(
-          colors: [
-            AppColors.primaryPurple,
-            AppColors.primaryPurpleDark,
-          ],
+          colors: [AppColors.primaryPurple, AppColors.primaryPurpleDark],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         ),
@@ -46,15 +43,12 @@ class GradientButton extends StatelessWidget {
                 width: 20.w,
                 child: const CircularProgressIndicator(
                   strokeWidth: 2,
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                    AppColors.white,
-                  ),
+                  valueColor: AlwaysStoppedAnimation<Color>(AppColors.white),
                 ),
               )
             : Text(
                 text,
-                style: TextStyle(
-                  fontSize: 17.sp,
+                style: Theme.of(context).textTheme.titleLarge?.copyWith(
                   fontWeight: FontWeight.w500,
                   color: AppColors.white,
                 ),

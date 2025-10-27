@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -16,8 +17,8 @@ class SocialButton extends StatelessWidget {
     required this.text,
     required this.icon,
     required this.backgroundColor,
-    this.textColor = Colors.white,
-    this.iconColor = Colors.white,
+    this.textColor = AppColors.white,
+    this.iconColor = AppColors.white,
     required this.onPressed,
   });
 
@@ -26,7 +27,7 @@ class SocialButton extends StatelessWidget {
     return SocialButton(
       text: 'Facebook',
       icon: Icons.facebook,
-      backgroundColor: const Color(0xFF4267B2),
+      backgroundColor: AppColors.facebookBlue,
       onPressed: onPressed,
     );
   }
@@ -36,7 +37,7 @@ class SocialButton extends StatelessWidget {
     return SocialButton(
       text: 'Twitter',
       icon: Icons.flutter_dash, // Using placeholder, replace with twitter icon
-      backgroundColor: const Color(0xFF1DA1F2),
+      backgroundColor: AppColors.twitterBlue,
       onPressed: onPressed,
     );
   }
@@ -46,7 +47,7 @@ class SocialButton extends StatelessWidget {
     return SocialButton(
       text: 'Google',
       icon: Icons.g_mobiledata,
-      backgroundColor: const Color(0xFFDB4437),
+      backgroundColor: AppColors.googleRed,
       onPressed: onPressed,
     );
   }
@@ -74,12 +75,13 @@ class SocialButton extends StatelessWidget {
               size: 24.sp,
             ),
             SizedBox(width: 12.w),
-            Text(
-              text,
-              style: TextStyle(
-                color: textColor,
-                fontSize: 16.sp,
-                fontWeight: FontWeight.w600,
+            Builder(
+              builder: (context) => Text(
+                text,
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                      color: textColor,
+                      fontWeight: FontWeight.w600,
+                    ),
               ),
             ),
           ],

@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/core/network/api_service.dart';
+import 'package:ecommerce_app/core/theme/theme_cubit.dart';
 import 'package:ecommerce_app/features/auth/data/data_sources/auth_local_data_source.dart';
 import 'package:ecommerce_app/features/auth/data/data_sources/auth_remote_data_source.dart';
 import 'package:ecommerce_app/features/auth/data/repositories/auth_repository_impl.dart';
@@ -22,6 +23,11 @@ Future<void> setupDependencies() async {
 
   // Core
   getIt.registerLazySingleton<ApiService>(() => ApiService());
+
+  // Theme
+  getIt.registerLazySingleton<ThemeCubit>(
+    () => ThemeCubit(pref: getIt<SharedPreferences>()),
+  );
 
   // Onboarding features
   getIt.registerLazySingleton<SaveGenderUseCase>(

@@ -1,4 +1,3 @@
-import 'package:ecommerce_app/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -8,10 +7,7 @@ import 'package:go_router/go_router.dart';
 class CustomBackButton extends StatelessWidget {
   final VoidCallback? onPressed;
 
-  const CustomBackButton({
-    super.key,
-    this.onPressed,
-  });
+  const CustomBackButton({super.key, this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -19,14 +15,10 @@ class CustomBackButton extends StatelessWidget {
       icon: Container(
         padding: EdgeInsets.all(8.w),
         decoration: const BoxDecoration(
-          color: AppColors.scaffoldBackgroundColor,
+          // color: AppColors.lightGrayBackground,
           shape: BoxShape.circle,
         ),
-        child: Icon(
-          Icons.arrow_back,
-          color: AppColors.textPrimary,
-          size: 20.sp,
-        ),
+        child: Icon(Icons.arrow_back, size: 20.sp),
       ),
       onPressed: onPressed ?? () => context.pop(),
     );
@@ -39,16 +31,13 @@ class CustomAuthAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? onBackPressed;
   final Color? backgroundColor;
 
-  const CustomAuthAppBar({
-    super.key,
-    this.onBackPressed,
-    this.backgroundColor,
-  });
+  const CustomAuthAppBar({super.key, this.onBackPressed, this.backgroundColor});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: backgroundColor ?? AppColors.white,
+      backgroundColor:
+          backgroundColor ?? Theme.of(context).scaffoldBackgroundColor,
       elevation: 0,
       leading: CustomBackButton(onPressed: onBackPressed),
     );

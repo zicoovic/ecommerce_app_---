@@ -1,4 +1,3 @@
-import 'package:ecommerce_app/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -23,10 +22,7 @@ class BottomAuthNavigation extends StatelessWidget {
       children: [
         Text(
           text,
-          style: TextStyle(
-            color: AppColors.textSecondary,
-            fontSize: 14.sp,
-          ),
+          style: Theme.of(context).textTheme.bodyMedium,
         ),
         TextButton(
           onPressed: onActionPressed,
@@ -35,11 +31,9 @@ class BottomAuthNavigation extends StatelessWidget {
           ),
           child: Text(
             actionText,
-            style: TextStyle(
-              color: AppColors.textPrimary,
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w600,
-            ),
+            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                  fontWeight: FontWeight.w600,
+                ),
           ),
         ),
       ],

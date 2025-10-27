@@ -16,7 +16,7 @@ class PasswordStrengthIndicator extends StatelessWidget {
       case 'Strong':
         return AppColors.success;
       case 'Medium':
-        return Colors.orange;
+        return AppColors.warning;
       case 'Weak':
         return AppColors.error;
       default:
@@ -34,10 +34,8 @@ class PasswordStrengthIndicator extends StatelessWidget {
       padding: EdgeInsets.only(right: 8.w),
       child: Text(
         strength,
-        style: TextStyle(
-          fontSize: 13.sp,
+        style: Theme.of(context).textTheme.bodySmall?.copyWith(
           color: _getStrengthColor(strength),
-          fontWeight: FontWeight.w500,
         ),
       ),
     );

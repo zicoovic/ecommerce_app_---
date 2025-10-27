@@ -58,7 +58,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: _buildAppBar(),
       body: BlocListener<AuthCubit, AuthState>(
         listener: _handleAuthStateChanges,
@@ -132,11 +132,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget _buildHeader() {
     return Text(
       AppStrings.registerTitle,
-      style: TextStyle(
-        fontSize: 28.sp,
-        fontWeight: FontWeight.w600,
-        color: AppColors.textPrimary,
-      ),
+      style: Theme.of(context).textTheme.headlineMedium,
     );
   }
 

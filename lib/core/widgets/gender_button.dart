@@ -24,7 +24,7 @@ class GenderButton extends StatelessWidget {
         width: 152.w,
         height: 60.h,
         decoration: _buildDecoration(),
-        child: Center(child: Text(title, style: _buildTextStyle())),
+        child: Center(child: Text(title, style: _buildTextStyle(context))),
       ),
     );
   }
@@ -36,11 +36,9 @@ class GenderButton extends StatelessWidget {
     );
   }
 
-  TextStyle _buildTextStyle() {
-    return TextStyle(
-      fontSize: 15.sp,
-      fontWeight: FontWeight.bold,
-      color: isSelected ? Colors.white : AppColors.textSecondary,
-    );
+  TextStyle _buildTextStyle(BuildContext context) {
+    return Theme.of(context).textTheme.titleMedium!.copyWith(
+          color: isSelected ? AppColors.white : AppColors.textSecondary,
+        );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -33,30 +34,32 @@ class SearchBarWidget extends StatelessWidget {
 
   /// Search input field with search icon
   Widget _buildSearchField() {
-    return Container(
-      height: 50.h,
-      decoration: BoxDecoration(
-        color: const Color(0xFFF5F6FA),
-        borderRadius: BorderRadius.circular(10.r),
-      ),
-      child: TextField(
-        controller: controller,
-        onChanged: onChanged,
-        onTap: onTap,
-        decoration: InputDecoration(
-          hintText: 'Search...',
-          hintStyle: TextStyle(
-            color: const Color(0xFF8F959E),
-            fontSize: 15.sp,
-            fontWeight: FontWeight.w400,
+    return Builder(
+      builder: (context) => Container(
+        height: 50.h,
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.surfaceContainerHighest,
+          borderRadius: BorderRadius.circular(10.r),
+        ),
+        child: TextField(
+          controller: controller,
+          onChanged: onChanged,
+          onTap: onTap,
+          decoration: InputDecoration(
+            hintText: 'Search...',
+            hintStyle: TextStyle(
+              color: AppColors.textSecondary,
+              fontSize: 15.sp,
+              fontWeight: FontWeight.w400,
+            ),
+            prefixIcon: Icon(
+              Icons.search,
+              color: AppColors.textSecondary,
+              size: 24.sp,
+            ),
+            border: InputBorder.none,
+            contentPadding: EdgeInsets.symmetric(vertical: 14.h),
           ),
-          prefixIcon: Icon(
-            Icons.search,
-            color: const Color(0xFF8F959E),
-            size: 24.sp,
-          ),
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.symmetric(vertical: 14.h),
         ),
       ),
     );
@@ -71,7 +74,7 @@ class SearchBarWidget extends StatelessWidget {
         height: 50.h,
         decoration: BoxDecoration(
           gradient: const LinearGradient(
-            colors: [Color(0xFF9747FF), Color(0xFF6C63FF)],
+            colors: [AppColors.primaryPurple, AppColors.secondaryPurple],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -79,7 +82,7 @@ class SearchBarWidget extends StatelessWidget {
         ),
         child: Icon(
           Icons.mic_none,
-          color: Colors.white,
+          color: AppColors.white,
           size: 24.sp,
         ),
       ),

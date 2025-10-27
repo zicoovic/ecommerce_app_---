@@ -7,10 +7,7 @@ import 'package:go_router/go_router.dart';
 class CircularBackButton extends StatelessWidget {
   final VoidCallback? onPressed;
 
-  const CircularBackButton({
-    super.key,
-    this.onPressed,
-  });
+  const CircularBackButton({super.key, this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -19,14 +16,14 @@ class CircularBackButton extends StatelessWidget {
       child: Container(
         width: 45.w,
         height: 45.h,
-        decoration: BoxDecoration(
-          color: const Color(0xFFF5F6FA),
+        decoration: const BoxDecoration(
+          // color: AppColors.lightGrayBackground,
           shape: BoxShape.circle,
         ),
         child: Icon(
           Icons.arrow_back_ios_new,
           size: 18.sp,
-          color: Colors.black,
+          // color: AppColors.textPrimary,
         ),
       ),
     );

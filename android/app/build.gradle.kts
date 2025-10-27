@@ -16,9 +16,11 @@ android {
             dimension = "env"
             applicationIdSuffix = ".dev"
             versionNameSuffix = "-dev"
+            resValue("string", "app_name", "ECommerce DEV")
         }
         create("prod") {
             dimension = "env"
+            resValue("string", "app_name", "ECommerce")
         }
     }
 

@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/widgets/theme_toggle_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -26,9 +27,15 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
               icon: Icons.menu,
               onPressed: onMenuPressed,
             ),
-            _buildIconButton(
-              icon: Icons.shopping_bag_outlined,
-              onPressed: onCartPressed,
+            Row(
+              children: [
+                const ThemeToggleButton(),
+                SizedBox(width: 8.w),
+                _buildIconButton(
+                  icon: Icons.shopping_bag_outlined,
+                  onPressed: onCartPressed,
+                ),
+              ],
             ),
           ],
         ),
@@ -41,19 +48,21 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
     required IconData icon,
     required VoidCallback onPressed,
   }) {
-    return GestureDetector(
-      onTap: onPressed,
-      child: Container(
-        width: 45.w,
-        height: 45.h,
-        decoration: BoxDecoration(
-          color: const Color(0xFFF5F6FA),
-          shape: BoxShape.circle,
-        ),
-        child: Icon(
-          icon,
-          size: 24.sp,
-          color: Colors.black,
+    return Builder(
+      builder: (context) => GestureDetector(
+        onTap: onPressed,
+        child: Container(
+          width: 45.w,
+          height: 45.h,
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.surfaceContainerHighest,
+            shape: BoxShape.circle,
+          ),
+          child: Icon(
+            icon,
+            size: 24.sp,
+            color: Theme.of(context).textTheme.bodyLarge?.color,
+          ),
         ),
       ),
     );

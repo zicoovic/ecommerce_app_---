@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/constants/app_colors.dart';
 import 'package:ecommerce_app/features/products/data/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -29,26 +30,26 @@ class ProductCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Expanded(child: _buildImageContainer()),
+          Expanded(child: _buildImageContainer(context)),
           SizedBox(height: 8.h),
-          _buildProductName(),
+          _buildProductName(context),
           SizedBox(height: 4.h),
-          _buildPrice(),
+          _buildPrice(context),
         ],
       ),
     );
   }
 
   /// Product image container with favorite button
-  Widget _buildImageContainer() {
+  Widget _buildImageContainer(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: const Color(0xFFF5F6FA),
+        color: Theme.of(context).colorScheme.surfaceContainerHighest,
         borderRadius: BorderRadius.circular(15.r),
       ),
       child: Stack(
         children: [
-          _buildProductImage(),
+          _buildProductImage(context),
           _buildFavoriteButton(),
         ],
       ),
@@ -56,7 +57,7 @@ class ProductCard extends StatelessWidget {
   }
 
   /// Product image using CachedNetworkImage
-  Widget _buildProductImage() {
+  Widget _buildProductImage(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(15.r),
       child: CachedNetworkImage(
@@ -64,20 +65,20 @@ class ProductCard extends StatelessWidget {
         width: double.infinity,
         height: double.infinity,
         fit: BoxFit.cover,
-        placeholder: (context, url) => Container(
-          color: const Color(0xFFF5F6FA),
+        placeholder: (_, url) => Container(
+          color: Theme.of(context).colorScheme.surfaceContainerHighest,
           child: Center(
             child: CircularProgressIndicator(
-              color: const Color(0xFF9747FF),
+              color: Theme.of(context).colorScheme.primary,
               strokeWidth: 2.w,
             ),
           ),
         ),
-        errorWidget: (context, url, error) => Center(
+        errorWidget: (_, url, error) => Center(
           child: Icon(
             Icons.image_not_supported_outlined,
             size: 40.sp,
-            color: Colors.grey,
+            color: AppColors.textSecondary,
           ),
         ),
       ),
@@ -95,12 +96,12 @@ class ProductCard extends StatelessWidget {
           width: 32.w,
           height: 32.h,
           decoration: const BoxDecoration(
-            color: Colors.white,
+            color: AppColors.white,
             shape: BoxShape.circle,
           ),
           child: Icon(
             isFavorite ? Icons.favorite : Icons.favorite_border,
-            color: isFavorite ? Colors.red : const Color(0xFF8F959E),
+            color: isFavorite ? AppColors.error : AppColors.textSecondary,
             size: 18.sp,
           ),
         ),
@@ -109,13 +110,11 @@ class ProductCard extends StatelessWidget {
   }
 
   /// Product name text
-  Widget _buildProductName() {
+  Widget _buildProductName(BuildContext context) {
     return Text(
       product.name,
-      style: TextStyle(
+      style: Theme.of(context).textTheme.bodySmall?.copyWith(
         fontSize: 11.sp,
-        fontWeight: FontWeight.w500,
-        color: Colors.black,
       ),
       maxLines: 2,
       overflow: TextOverflow.ellipsis,
@@ -123,14 +122,10 @@ class ProductCard extends StatelessWidget {
   }
 
   /// Product price text
-  Widget _buildPrice() {
+  Widget _buildPrice(BuildContext context) {
     return Text(
       '\$${product.price}',
-      style: TextStyle(
-        fontSize: 13.sp,
-        fontWeight: FontWeight.w600,
-        color: Colors.black,
-      ),
+      style: Theme.of(context).textTheme.titleSmall,
     );
   }
 }
