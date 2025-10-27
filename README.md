@@ -227,5 +227,4 @@ lib/
 
 ## 📄 License
 
-> 📝 **Copyright © 2025 Abdelrhman Zakaria**  
-> This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+> 📝 **Copyright © 2025 Abdelrahman Zakaria**  
